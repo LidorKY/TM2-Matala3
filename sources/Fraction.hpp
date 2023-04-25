@@ -50,33 +50,33 @@ public:
     /*----------------*/
 
     /*----exuals----*/
-    bool operator==(float second_num);
-    bool operator==(Fraction second_num);
-    friend bool operator==(float first_num, Fraction second_num);
+    bool operator==(const float &second_num) const;
+    bool operator==(const Fraction &second_num) const;
+    friend bool operator==(const float &first_num, const Fraction &second_num);
     /*--------------*/
 
     /*----bigger_than----*/
-    bool operator>(float second_num);
-    bool operator>(Fraction second_num);
-    friend bool operator>(float first_num, Fraction second_num);
+    bool operator>(const float &second_num) const;
+    bool operator>(const Fraction &second_num) const;
+    friend bool operator>(const float &first_num, const Fraction &second_num);
     /*-------------------*/
 
     /*----lower_than----*/
-    bool operator<(float second_num);
-    bool operator<(Fraction second_num);
-    friend bool operator<(float first_num, Fraction second_num);
+    bool operator<(const float &second_num) const;
+    bool operator<(const Fraction &second_num) const;
+    friend bool operator<(const float &first_num, const Fraction &second_num);
     /*------------------*/
 
     /*----bigger_or_equals----*/
-    bool operator>=(float second_num);
-    bool operator>=(Fraction second_num);
-    friend bool operator>=(float first_num, Fraction second_num);
+    bool operator>=(const float &second_num) const;
+    bool operator>=(const Fraction &second_num) const;
+    friend bool operator>=(const float &first_num, const Fraction &second_num);
     /*-----------------------*/
 
     /*----lower_or_equals----*/
-    bool operator<=(float second_num);
-    bool operator<=(Fraction second_num);
-    friend bool operator<=(float first_num, Fraction second_num);
+    bool operator<=(const float &second_num) const;
+    bool operator<=(const Fraction &second_num) const;
+    friend bool operator<=(const float &first_num, const Fraction &second_num);
     /*-----------------------*/
 
     /*----add_1----*/

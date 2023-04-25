@@ -13,7 +13,7 @@ Fraction::Fraction(const int &numerator, const int &denominator) : _numerator(nu
     {
         throw invalid_argument("denominator can't be equals to 0");
     }
-    int reducer = gcd(numerator, denominator);
+    int reducer = gcd(numerator, denominator); // reduction
     this->_numerator = numerator / reducer;
     this->_denominator = denominator / reducer;
 }
@@ -121,31 +121,157 @@ Fraction Fraction::operator/(const Fraction &second_num)
     bottom = bottom / reducer;
     return Fraction(top, bottom); // fra / fra
 }
-Fraction operator/(const float &first_num, const Fraction &second_num) {
+Fraction operator/(const float &first_num, const Fraction &second_num)
+{
     int num1 = first_num * 1000;
     Fraction temp(num1, 1000);
     return (temp / second_num); // fra / fra
 }
 
-bool Fraction::operator==(float second_num) { return false; }
-bool Fraction::operator==(Fraction second_num) { return false; }
-bool operator==(float first_num, Fraction second_num) { return false; }
+bool Fraction::operator==(const float &second_num) const
+{
+    int num2 = second_num * 1000; // get only 3 digits after the decimal point.
+    Fraction temp(num2, 1000);    // make a temp fraction.
+    if (this->_numerator == temp._numerator && this->_denominator == temp._denominator)
+    {
+        return true;
+    }
+    return false;
+}
+bool Fraction::operator==(const Fraction &second_num) const
+{
+    if (this->_numerator == second_num._numerator && this->_denominator == second_num._denominator)
+    {
+        return true;
+    }
+    return false;
+}
+bool operator==(const float &first_num, const Fraction &second_num)
+{
+    int num2 = first_num * 1000; // get only 3 digits after the decimal point.
+    Fraction temp(num2, 1000);   // make a temp fraction.
+    if (temp._numerator == second_num._numerator && temp._denominator == second_num._denominator)
+    {
+        return true;
+    }
+    return false;
+}
 
-bool Fraction::operator>(float second_num) { return true; }
-bool Fraction::operator>(Fraction second_num) { return true; }
-bool operator>(float first_num, Fraction second_num) { return true; }
+bool Fraction::operator>(const float &second_num) const
+{
+    int num2 = second_num * 1000; // get only 3 digits after the decimal point.
+    Fraction temp(num2, 1000);    // make a temp fraction.
+    if (this->_numerator * temp._denominator > this->_denominator * temp._numerator)
+    {
+        return true;
+    }
+    return false;
+}
+bool Fraction::operator>(const Fraction &second_num) const
+{
+    if (this->_numerator * second_num._denominator > this->_denominator * second_num._numerator)
+    {
+        return true;
+    }
+    return false;
+}
+bool operator>(const float &first_num, const Fraction &second_num)
+{
+    int num2 = first_num * 1000; // get only 3 digits after the decimal point.
+    Fraction temp(num2, 1000);   // make a temp fraction.
+    if (temp._numerator * second_num._denominator > temp._denominator * second_num._numerator)
+    {
+        return true;
+    }
+    return false;
+}
 
-bool Fraction::operator<(float second_num) { return true; }
-bool Fraction::operator<(Fraction second_num) { return true; }
-bool operator<(float first_num, Fraction second_num) { return true; }
+bool Fraction::operator<(const float &second_num) const
+{
+    int num2 = second_num * 1000; // get only 3 digits after the decimal point.
+    Fraction temp(num2, 1000);    // make a temp fraction.
+    if (this->_numerator * temp._denominator < this->_denominator * temp._numerator)
+    {
+        return true;
+    }
+    return false;
+}
+bool Fraction::operator<(const Fraction &second_num) const
+{
+    if (this->_numerator * second_num._denominator < this->_denominator * second_num._numerator)
+    {
+        return true;
+    }
+    return false;
+}
+bool operator<(const float &first_num, const Fraction &second_num)
+{
+    int num2 = first_num * 1000; // get only 3 digits after the decimal point.
+    Fraction temp(num2, 1000);   // make a temp fraction.
+    if (temp._numerator * second_num._denominator < temp._denominator * second_num._numerator)
+    {
+        return true;
+    }
+    return false;
+}
 
-bool Fraction::operator>=(float second_num) { return true; }
-bool Fraction::operator>=(Fraction second_num) { return true; }
-bool operator>=(float first_num, Fraction second_num) { return true; }
+bool Fraction::operator>=(const float &second_num) const
+{
+    int num2 = second_num * 1000; // get only 3 digits after the decimal point.
+    Fraction temp(num2, 1000);    // make a temp fraction.
+    if (*this > temp || *this == temp)
+    {
+        return true;
+    }
+    return false;
+}
+bool Fraction::operator>=(const Fraction &second_num) const
+{
+    if (*this > second_num || *this == second_num)
+    {
+        return true;
+    }
+    return false;
+}
+bool operator>=(const float &first_num, const Fraction &second_num)
+{
+    int num2 = first_num * 1000; // get only 3 digits after the decimal point.
+    Fraction temp(num2, 1000);   // make a temp fraction.
+    if (temp > second_num || temp == second_num)
+    {
+        return true;
+    }
+    return false;
+}
 
-bool Fraction::operator<=(float second_num) { return true; }
-bool Fraction::operator<=(Fraction second_num) { return true; }
-bool operator<=(float first_num, Fraction second_num) { return true; }
+bool Fraction::operator<=(const float &second_num) const
+{
+    int num2 = second_num * 1000; // get only 3 digits after the decimal point.
+    Fraction temp(num2, 1000);    // make a temp fraction.
+    if (*this < temp || *this == temp)
+    {
+        return true;
+    }
+    return false;
+}
+bool Fraction::operator<=(const Fraction &second_num) const
+{
+    if (*this < second_num || *this == second_num)
+    {
+        return true;
+    }
+    return false;
+}
+bool operator<=(const float &first_num, const Fraction &second_num)
+{
+    int num2 = first_num * 1000; // get only 3 digits after the decimal point.
+    Fraction temp(num2, 1000);   // make a temp fraction.
+    if (temp < second_num || temp == second_num)
+    {
+        return true;
+    }
+    return false;
+}
 
 Fraction &Fraction::operator++()
 {                                                             // prefix - ++n.
