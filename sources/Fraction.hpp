@@ -23,29 +23,29 @@ public:
     /*-------------------*/
 
     //----functions----//
-    int gcd();
+    int gcd(int num1, int num2);
 
     /*----addition----*/
-    Fraction operator+(const float &second_num) const;
-    Fraction operator+(const Fraction &second_num) const;
+    Fraction operator+(const float &second_num);
+    Fraction operator+(const Fraction &second_num);
     friend Fraction operator+(const float &first_num, const Fraction &second_num);
     /*----------------*/
 
     /*----substruction----*/
-    Fraction operator-(const float &second_num) const;
-    Fraction operator-(const Fraction &second_num) const;
+    Fraction operator-(const float &second_num);
+    Fraction operator-(const Fraction &second_num);
     friend Fraction operator-(const float &first_num, const Fraction &second_num);
     /*--------------------*/
 
     /*----multiplication----*/
-    Fraction operator*(const float &second_num) const;
-    Fraction operator*(const Fraction &second_num) const;
+    Fraction operator*(const float &second_num);
+    Fraction operator*(const Fraction &second_num);
     friend Fraction operator*(const float &first_num, const Fraction &second_num);
     /*----------------------*/
 
     /*----division----*/
-    Fraction operator/(const float &second_num) const;
-    Fraction operator/(const Fraction &second_num) const;
+    Fraction operator/(const float &second_num);
+    Fraction operator/(const Fraction &second_num);
     friend Fraction operator/(const float &first_num, const Fraction &second_num);
     /*----------------*/
 
