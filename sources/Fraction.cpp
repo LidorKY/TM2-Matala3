@@ -303,5 +303,11 @@ const Fraction Fraction::operator--(int)
     return copy;           // return the copy
 }
 
-ostream &operator<<(ostream &output, const Fraction &fraction) { return output; }
-istream &operator>>(istream &input, Fraction &fraction) { return input; }
+ostream &operator<<(ostream &output, const Fraction &fraction)
+{
+    return output << fraction._numerator << "/" << fraction._denominator << endl;
+}
+istream &operator>>(istream &input, Fraction &fraction)
+{
+    // need to fill this section.
+}

@@ -31,7 +31,7 @@ TEST_CASE("Substruction")
     Fraction num2(3, 4);
     float num3 = 1.943;
     float num4 = 0.469;
-    CHECK(num1 - num2 == -0.25);                // fra + fra
+    CHECK(num1 - num2 == -0.250);               // fra + fra
     CHECK(num2 - num1 == Fraction(1, 4));       // fra + fra
     CHECK(num1 - num3 == -1.443);               // fra + float
     CHECK(num1 - num4 == Fraction(31, 1000));   // fra + float
@@ -40,7 +40,7 @@ TEST_CASE("Substruction")
     num1--;
     CHECK(num1 == -0.5);
     --num2;
-    CHECK(num2 == -0.75);
+    CHECK(num2 == -0.25);
 }
 
 TEST_CASE("Multiplication")
@@ -51,9 +51,9 @@ TEST_CASE("Multiplication")
     float num4 = 0.469;
     CHECK(num1 * num2 == 0.375);                // fra + fra
     CHECK(num2 * num1 == Fraction(3, 8));       // fra + fra
-    CHECK(num1 * num3 == 0.9715);               // fra + float
+    CHECK(num1 * num3 == 0.971);                // fra + float
     CHECK(num1 * num4 == Fraction(469, 2000));  // fra + float
-    CHECK(num3 * num2 == 1.45725);              // float + fra
+    CHECK(num3 * num2 == 1.457);                // float + fra
     CHECK(num4 * num2 == Fraction(1407, 4000)); // float + fra
 }
 
