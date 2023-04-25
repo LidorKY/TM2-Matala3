@@ -309,5 +309,5 @@ ostream &operator<<(ostream &output, const Fraction &fraction)
 }
 istream &operator>>(istream &input, Fraction &fraction)
 {
-    // need to fill this section.
+    return input; // need to fill this section.
 }
