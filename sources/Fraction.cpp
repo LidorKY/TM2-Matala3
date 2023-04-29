@@ -6,7 +6,13 @@
 using namespace std;
 // using namespace ariel;
 
+// gal ben shitrit gave me an idea to multiply the number by 1000 to get 3 numbers after the decimal point.
+
 /*----constructors----*/
+Fraction::Fraction()
+{
+    Fraction(0, 1);
+}
 Fraction::Fraction(const int &numerator, const int &denominator) : _numerator(numerator), _denominator(denominator)
 {
     if (denominator == 0)
@@ -14,8 +20,16 @@ Fraction::Fraction(const int &numerator, const int &denominator) : _numerator(nu
         throw invalid_argument("denominator can't be equals to 0");
     }
     int reducer = gcd(numerator, denominator); // reduction
-    this->_numerator = numerator / reducer;
-    this->_denominator = denominator / reducer;
+    this->_numerator = (numerator / reducer);
+    this->_denominator = (denominator / reducer);
+}
+Fraction::Fraction(const float &num)
+{
+    int temp = num * 1000;
+    int reducer = gcd(temp, 1000); // reduction
+    this->_numerator = (temp / reducer);
+    this->_denominator = (1000 / reducer);
+
 }
 /*--------------------*/
 
@@ -26,6 +40,15 @@ int Fraction::gcd(int num1, int num2)
         return num1;
     }
     return gcd(num2, num1 % num2);
+}
+
+int Fraction::getNumerator()
+{
+    return _numerator;
+}
+int Fraction::getDenominator()
+{
+    return _denominator;
 }
 
 Fraction Fraction::operator+(const float &second_num)
@@ -303,11 +326,14 @@ const Fraction Fraction::operator--(int)
     return copy;           // return the copy
 }
 
-ostream &operator<<(ostream &output, const Fraction &fraction)
+ostream &operator<<(ostream &output, Fraction &fraction)
 {
-    return output << fraction._numerator << "/" << fraction._denominator << endl;
+    return output << fraction.Fraction::getNumerator() << "/" << fraction.getDenominator();
 }
 istream &operator>>(istream &input, Fraction &fraction)
 {
+    // float a;
+    // input >> a;
+
     return input; // need to fill this section.
 }

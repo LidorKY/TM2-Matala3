@@ -19,11 +19,15 @@ private:
 
 public:
     /*----constructor----*/
+    Fraction();
     Fraction(const int &numerator, const int &denominator);
+    Fraction(const float &num);
     /*-------------------*/
 
     //----functions----//
     int gcd(int num1, int num2);
+    int getNumerator();
+    int getDenominator();
 
     /*----addition----*/
     Fraction operator+(const float &second_num);
@@ -90,7 +94,7 @@ public:
     /*-------------------*/
 
     /*----output----*/
-    friend ostream &operator<<(ostream &output, const Fraction &fraction);
+    friend ostream &operator<<(ostream &output, Fraction &fraction);
     /*--------------*/
 
     /*----intput----*/
