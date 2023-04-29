@@ -29,7 +29,6 @@ Fraction::Fraction(const float &num)
     int reducer = gcd(temp, 1000); // reduction
     this->_numerator = (temp / reducer);
     this->_denominator = (1000 / reducer);
-
 }
 /*--------------------*/
 
@@ -44,11 +43,11 @@ int Fraction::gcd(int num1, int num2)
 
 int Fraction::getNumerator()
 {
-    return _numerator;
+    return this->_numerator;
 }
 int Fraction::getDenominator()
 {
-    return _denominator;
+    return this->_denominator;
 }
 
 Fraction Fraction::operator+(const float &second_num)
@@ -328,12 +327,9 @@ const Fraction Fraction::operator--(int)
 
 ostream &operator<<(ostream &output, Fraction &fraction)
 {
-    return output << fraction.Fraction::getNumerator() << "/" << fraction.getDenominator();
+    return output << fraction.getNumerator() << "/" << fraction.getDenominator();
 }
 istream &operator>>(istream &input, Fraction &fraction)
 {
-    // float a;
-    // input >> a;
-
     return input; // need to fill this section.
 }
