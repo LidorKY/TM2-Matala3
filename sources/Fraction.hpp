@@ -4,6 +4,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <string>
+#include <limits>
 using namespace std;
 
 namespace ariel
@@ -16,6 +17,7 @@ class Fraction
 private:
     int _numerator;   // mone
     int _denominator; // mechane
+
 public:
     /*----constructor----*/
     Fraction();

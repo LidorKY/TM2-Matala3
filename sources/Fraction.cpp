@@ -3,6 +3,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <string>
+#include <limits>
 #include "Fraction.hpp"
 using namespace std;
 // using namespace ariel;
@@ -120,9 +121,18 @@ Fraction Fraction::operator*(const float &second_num)
 }
 Fraction Fraction::operator*(const Fraction &second_num)
 {
+
     int top = this->_numerator * second_num._numerator;        // combine numerators
     int bottom = this->_denominator * second_num._denominator; // make new denominator
-    int reducer = gcd(top, bottom);                            // find gcd and reduce
+    if (__builtin_mul_overflow(this->_numerator, second_num._numerator, &top))
+    {
+        throw std::overflow_error("overflow in numerator.");
+    }
+    if (__builtin_mul_overflow(this->_denominator, second_num._denominator, &bottom))
+    {
+        throw std::overflow_error("overflow in denominator.");
+    }
+    int reducer = gcd(top, bottom); // find gcd and reduce
     top = top / reducer;
     bottom = bottom / reducer;
     return Fraction(top, bottom); // fra * fra
