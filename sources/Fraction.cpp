@@ -23,6 +23,11 @@ Fraction::Fraction(const int &numerator, const int &denominator) : _numerator(nu
     int reducer = gcd(numerator, denominator); // reduction
     this->_numerator = (numerator / reducer);
     this->_denominator = (denominator / reducer);
+    if ((this->_numerator > 0 && this->_denominator < 0) || (this->_numerator < 0 && this->_denominator < 0))
+    {
+        this->_numerator *= -1;
+        this->_denominator *= -1;
+    }
 }
 Fraction::Fraction(const float &num)
 {
