@@ -16,7 +16,6 @@ class Fraction
 private:
     int _numerator;   // mone
     int _denominator; // mechane
-
 public:
     /*----constructor----*/
     Fraction();
@@ -28,6 +27,8 @@ public:
     int gcd(int num1, int num2);
     int getNumerator();
     int getDenominator();
+    void setNumerator(int num);
+    void setDenominator(int num);
 
     /*----addition----*/
     Fraction operator+(const float &second_num);
@@ -84,13 +85,13 @@ public:
     /*-----------------------*/
 
     /*----add_1----*/
-    Fraction &operator++();         // prefix - ++n. minute 27.
-    const Fraction operator++(int); // postfix - n++. minute 27.
+    Fraction &operator++();   // prefix - ++n.
+    Fraction operator++(int); // postfix - n++.
     /*------------*/
 
     /*----substruct_1----*/
-    Fraction &operator--();         // prefix - ++n. minute 27.
-    const Fraction operator--(int); // postfix - n++. minute 27.
+    Fraction &operator--();   // prefix - --n.
+    Fraction operator--(int); // postfix - n--.
     /*-------------------*/
 
     /*----output----*/
@@ -98,6 +99,6 @@ public:
     /*--------------*/
 
     /*----intput----*/
-    friend istream &operator>>(ostream &input, Fraction &fraction);
+    friend istream &operator>>(istream &input, Fraction &fraction);
     /*--------------*/
 };

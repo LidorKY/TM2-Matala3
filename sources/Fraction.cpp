@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
+#include <string>
 #include "Fraction.hpp"
 using namespace std;
 // using namespace ariel;
@@ -48,6 +49,14 @@ int Fraction::getNumerator()
 int Fraction::getDenominator()
 {
     return this->_denominator;
+}
+void Fraction::setNumerator(int num)
+{
+    this->_numerator = num;
+}
+void Fraction::setDenominator(int num)
+{
+    this->_denominator = num;
 }
 
 Fraction Fraction::operator+(const float &second_num)
@@ -162,7 +171,7 @@ bool Fraction::operator==(const float &second_num) const
 }
 bool Fraction::operator==(const Fraction &second_num) const
 {
-    if (this->_numerator == second_num._numerator && this->_denominator == second_num._denominator)
+    if (this->_numerator * second_num._denominator == second_num._numerator * this->_denominator)
     {
         return true;
     }
@@ -303,7 +312,7 @@ Fraction &Fraction::operator++()
     this->_denominator = this->_denominator / reducer;        // reduction
     return *this;
 }
-const Fraction Fraction::operator++(int)
+Fraction Fraction::operator++(int)
 {                          // postfix - n++.
     Fraction copy = *this; // make a copy
     ++*this;               // add 1
@@ -318,7 +327,7 @@ Fraction &Fraction::operator--()
     this->_denominator = this->_denominator / reducer;        // reduction
     return *this;
 }
-const Fraction Fraction::operator--(int)
+Fraction Fraction::operator--(int)
 {                          // postfix - n++.
     Fraction copy = *this; // make a copy
     --*this;               // add 1
@@ -329,7 +338,23 @@ ostream &operator<<(ostream &output, Fraction &fraction)
 {
     return output << fraction.getNumerator() << "/" << fraction.getDenominator();
 }
+
 istream &operator>>(istream &input, Fraction &fraction)
 {
-    return input; // need to fill this section.
+    if (input >> fraction._numerator) // check if input is successful
+    {
+        if (input >> fraction._denominator) // check if input is successful
+        {
+        }
+        else
+        {
+            throw invalid_argument("error in input."); // there is no input for the denominator.
+        }
+    }
+    else
+    {
+        throw invalid_argument("error in input."); // the buffer is empty.
+    }
+
+    return input;
 }
