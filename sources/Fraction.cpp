@@ -162,7 +162,15 @@ Fraction Fraction::operator/(const Fraction &second_num)
     }
     int top = this->_numerator * second_num._denominator;    // combine numerators
     int bottom = this->_denominator * second_num._numerator; // make new denominator
-    int reducer = gcd(top, bottom);                          // find gcd and reduce
+    if (__builtin_mul_overflow(this->_numerator, second_num._denominator, &top))
+    {
+        throw std::overflow_error("overflow in numerator.");
+    }
+    if (__builtin_mul_overflow(this->_denominator, second_num._numerator, &bottom))
+    {
+        throw std::overflow_error("overflow in denominator.");
+    }
+    int reducer = gcd(top, bottom); // find gcd and reduce
     top = top / reducer;
     bottom = bottom / reducer;
     return Fraction(top, bottom); // fra / fra
