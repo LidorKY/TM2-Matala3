@@ -138,7 +138,7 @@ Fraction Fraction::operator/(const float &second_num)
 {
     if (second_num == 0)
     {
-        throw invalid_argument("can't devide by 0");
+        throw runtime_error("can't devide by 0");
     }
     int num2 = second_num * 1000; // get only 3 digits after the decimal point.
     Fraction temp(num2, 1000);    // make a temp fraction.
@@ -148,7 +148,7 @@ Fraction Fraction::operator/(const Fraction &second_num)
 {
     if (second_num._numerator == 0)
     {
-        throw invalid_argument("can't devide by 0");
+        throw runtime_error("can't devide by 0");
     }
     int top = this->_numerator * second_num._denominator;    // combine numerators
     int bottom = this->_denominator * second_num._numerator; // make new denominator
@@ -353,12 +353,12 @@ istream &operator>>(istream &input, Fraction &fraction)
         }
         else
         {
-            throw invalid_argument("error in input."); // there is no input for the denominator.
+            throw runtime_error("error in input."); // there is no input for the denominator.
         }
     }
     else
     {
-        throw invalid_argument("error in input."); // the buffer is empty.
+        throw runtime_error("error in input."); // the buffer is empty.
     }
 
     return input;
