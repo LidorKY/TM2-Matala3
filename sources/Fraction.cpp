@@ -350,6 +350,18 @@ istream &operator>>(istream &input, Fraction &fraction)
     {
         if (input >> fraction._denominator) // check if input is successful
         {
+            if (fraction._denominator == 0)
+            {
+                throw runtime_error("error in input.");
+            }
+            else
+            {
+                if ((fraction._numerator > 0 && fraction._denominator < 0) || (fraction._numerator < 0 && fraction._denominator < 0))
+                {
+                    fraction._numerator *= -1;
+                    fraction._denominator *= -1;
+                }
+            }
         }
         else
         {

@@ -727,7 +727,6 @@ TEST_SUITE("Input and output operators tests")
         ss_in >> frac1 >> frac2;
         CHECK_EQ(frac1, Fraction{1, 2});
         CHECK_EQ(frac2, Fraction{3, -4});
-
         std::stringstream ss_out;
         ss_out << frac1 << " and " << frac2;
         CHECK(ss_out.str() == "1/2 and -3/4");
