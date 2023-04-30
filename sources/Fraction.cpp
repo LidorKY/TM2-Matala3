@@ -226,7 +226,9 @@ bool Fraction::operator==(const float &second_num) const
 }
 bool Fraction::operator==(const Fraction &second_num) const
 {
-    if (this->_numerator * second_num._denominator == second_num._numerator * this->_denominator)
+    int top1 = this->_numerator * second_num._denominator; // combine numerators
+    int top2 = second_num._numerator * this->_denominator; // make new denominator
+    if (top1 == top2)
     {
         return true;
     }
