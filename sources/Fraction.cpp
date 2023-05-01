@@ -215,18 +215,39 @@ Fraction operator/(const float &first_num, const Fraction &second_num)
 
 bool Fraction::operator==(const float &second_num) const
 {
-    return *this == Fraction(second_num);
+    if (*this == Fraction(second_num))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 bool Fraction::operator==(const Fraction &second_num) const
 {
-    const float deepshit = 1000.0;
-    int x = (int)(((float)_numerator / (float)_denominator) * deepshit);
-    int y = (int)(((float)second_num._numerator / (float)second_num._denominator) * deepshit);
-    return (x == y);
+    const float temp = 1000.0;
+    int x = (int)(((float)_numerator / (float)_denominator) * temp);
+    int y = (int)(((float)second_num._numerator / (float)second_num._denominator) * temp);
+    if (x == y)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 bool operator==(const float &first_num, const Fraction &second_num)
 {
-    return Fraction(first_num) == second_num;
+    if (Fraction(first_num) == second_num)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 bool Fraction::operator>(const float &second_num) const
