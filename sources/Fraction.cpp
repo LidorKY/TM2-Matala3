@@ -30,12 +30,11 @@ Fraction::Fraction(const int &numerator, const int &denominator) : _numerator(nu
         this->_denominator *= -1;
     }
 }
-Fraction::Fraction(const float &num)
+Fraction::Fraction(const float &num) : _numerator(1000 * num), _denominator(1000)
 {
-    int temp = num * 1000;
-    int reducer = gcd(temp, 1000); // reduction
-    this->_numerator = (temp / reducer);
-    this->_denominator = (1000 / reducer);
+    int reducer = gcd(_numerator, _denominator); // reduction
+    _numerator /= reducer;
+    _denominator /= reducer;
 }
 /*--------------------*/
 
@@ -216,33 +215,18 @@ Fraction operator/(const float &first_num, const Fraction &second_num)
 
 bool Fraction::operator==(const float &second_num) const
 {
-    int num2 = second_num * 1000; // get only 3 digits after the decimal point.
-    Fraction temp(num2, 1000);    // make a temp fraction.
-    if (this->_numerator == temp._numerator && this->_denominator == temp._denominator)
-    {
-        return true;
-    }
-    return false;
+    return *this == Fraction(second_num);
 }
 bool Fraction::operator==(const Fraction &second_num) const
 {
-    int top1 = this->_numerator * second_num._denominator; // combine numerators
-    int top2 = second_num._numerator * this->_denominator; // make new denominator
-    if (top1 == top2)
-    {
-        return true;
-    }
-    return false;
+    const float deepshit = 1000.0;
+    int x = (int)(((float)_numerator / (float)_denominator) * deepshit);
+    int y = (int)(((float)second_num._numerator / (float)second_num._denominator) * deepshit);
+    return (x == y);
 }
 bool operator==(const float &first_num, const Fraction &second_num)
 {
-    int num2 = first_num * 1000; // get only 3 digits after the decimal point.
-    Fraction temp(num2, 1000);   // make a temp fraction.
-    if (temp._numerator == second_num._numerator && temp._denominator == second_num._denominator)
-    {
-        return true;
-    }
-    return false;
+    return Fraction(first_num) == second_num;
 }
 
 bool Fraction::operator>(const float &second_num) const
@@ -393,7 +377,8 @@ Fraction Fraction::operator--(int)
 
 ostream &operator<<(ostream &output, Fraction &fraction)
 {
-    return output << fraction.getNumerator() << "/" << fraction.getDenominator();
+    output << fraction.getNumerator() << "/" << fraction.getDenominator();
+    return output;
 }
 
 istream &operator>>(istream &input, Fraction &fraction)
